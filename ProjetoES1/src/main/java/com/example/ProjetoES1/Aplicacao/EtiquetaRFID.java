@@ -17,10 +17,17 @@ public class EtiquetaRFID {
     private Long id;
 
     private String codigo;
+    
+    private boolean atrelado;
 
-    public EtiquetaRFID(Long id, String codigo) {
+    public EtiquetaRFID() {
+    }
+    
+
+    public EtiquetaRFID(Long id, String codigo, boolean atrelado) {
         this.id = id;
         this.codigo = codigo;
+        this.atrelado = atrelado;
     }
 
     public Long getId() {
@@ -39,4 +46,12 @@ public class EtiquetaRFID {
         this.codigo = codigo;
     }
 
+    public boolean isAtrelado() {
+        return atrelado;
+    }
+
+    public void setAtrelado(boolean atrelado) {
+        this.atrelado = atrelado;
+    }
+    
 }

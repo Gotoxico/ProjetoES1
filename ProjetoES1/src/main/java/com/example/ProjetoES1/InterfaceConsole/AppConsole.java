@@ -25,86 +25,105 @@ public class AppConsole {
     private static RelatorioService relatorioService = new RelatorioService();
 
     private static Estoque estoque = new Estoque();
-    private static Login login = new Login();
+    private static Login login = null;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean executando = true;
+        boolean logado = false;
 
         System.out.println("=== Sistema de Estoque ===");
 
         while (executando) {
             System.out.println("\nEscolha uma opção:");
-            System.out.println("1 - Fazer login");
-            System.out.println("2 - Adicionar produto ao estoque");
-            System.out.println("3 - Remover produto do estoque");
-            System.out.println("4 - Gerar relatório");
-            System.out.println("0 - Sair");
+            if (!logado) {
+                System.out.println("1 - Fazer login");
+                System.out.println("0 - Sair");
+            } else {
+                System.out.println("2 - Adicionar produto ao estoque");
+                System.out.println("3 - Remover produto do estoque");
+                System.out.println("4 - Gerar relatório");
+                System.out.println("5 - Logout");
+                System.out.println("0 - Sair");
+            }
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // consumir quebra de linha
+            scanner.nextLine();
 
-            switch (opcao) {
-                case 1:
-                    System.out.print("Usuário: ");
-                    String usuario = scanner.nextLine();
-                    System.out.print("Senha: ");
-                    String senha = scanner.nextLine();
+            if (!logado) {
+                switch (opcao) {
+                    case 1:
+                        System.out.print("Usuário: ");
+                        String usuario = scanner.nextLine();
+                        System.out.print("Senha: ");
+                        String senha = scanner.nextLine();
 
-                    login.setUsuario(usuario);
-                    login.setSenha(senha);
+                        logado = loginService.verificarLogin(usuario, senha) != false;
 
-                    boolean sucesso = loginService.verificarLogin(login, usuario, senha);
-                    System.out.println(sucesso ? "Login bem-sucedido!" : "Falha no login.");
-                    break;
+                        System.out.println(logado ? "Login bem-sucedido!" : "Falha no login.");
+                        break;
 
-                case 2:
-                    Produto produto = new Produto();
-                    System.out.print("Nome do produto: ");
-                    produto.setNome(scanner.nextLine());
-                    System.out.print("Quantidade: ");
-                    produto.setQuantidade(scanner.nextInt());
-                    scanner.nextLine();
+                    case 0:
+                        executando = false;
+                        break;
 
-                    estoqueService.adicionarProduto(estoque, produto);
-                    System.out.println("Produto adicionado com sucesso.");
-                    break;
-                    
-                case 3:
-                    System.out.print("Nome do produto a remover: ");
-                    String nomeParaRemover = scanner.nextLine();
+                    default:
+                        System.out.println("Você precisa fazer login primeiro.");
+                }
+            } else {
+                switch (opcao) {
+                    case 2:
+                        Produto produto = new Produto();
+                        System.out.print("Código de barras do produto: ");
+                        produto.setCodigoBarras(scanner.nextInt());
+                        System.out.print("Quantidade: ");
+                        produto.setQuantidade(scanner.nextInt());
 
-                    Produto produtoParaRemover = null;
-                    for (Produto p : estoque.getProdutos()) {
-                        if (p.getNome().equalsIgnoreCase(nomeParaRemover)) {
-                            produtoParaRemover = p;
-                            break;
+                        boolean produtoNovo = estoqueService.adicionarProduto(estoque, produto);
+                        
+                        if (produtoNovo == false){
+                            scanner.nextLine();
+                            System.out.println("Nome do produto: ");
+                            produto.setNome(scanner.nextLine());
+                            estoqueService.adicionarProdutoInexistente(estoque, produto);
                         }
-                    }
+                        
+                        System.out.println("Produto adicionado com sucesso.");
+                        break;
 
-                    if (produtoParaRemover != null) {
-                        estoqueService.removerProduto(estoque, produtoParaRemover);
-                        System.out.println("Produto removido com sucesso.");
-                    } else {
-                        System.out.println("Produto não encontrado.");
-                    }
-                    break;
-                    
-                
+                    case 3:
+                        System.out.print("Codigo de barras do produto a remover: ");
+                        int codigoBarrasParaRemover = scanner.nextInt();
+                        
+                        boolean sucesso = estoqueService.removerProduto(estoque, codigoBarrasParaRemover);
 
-                case 4:
-                    relatorioService.gerarRelatorio(estoque);
-                    System.out.println("Relatório gerado:");
-                    System.out.println("Data: " + estoque.getRelatorio().getDataGeracao());
-                    System.out.println("Conteúdo: " + estoque.getRelatorio().getConteudo());
-                    break;
+                        if (sucesso) {
+                            System.out.println("Produto removido com sucesso.");
+                        } else {
+                            System.out.println("Produto não encontrado.");
+                        }
+                        break;
 
-                case 0:
-                    executando = false;
-                    break;
+                    case 4:
+                        relatorioService.gerarRelatorio(estoque);
+                        System.out.println("Relatório gerado:");
+                        System.out.println("Data: " + estoque.getRelatorio().getDataGeracao());
+                        System.out.println("Conteúdo: " + estoque.getRelatorio().getConteudo());
+                        break;
 
-                default:
-                    System.out.println("Opção inválida.");
+                    case 5:
+                        logado = false;
+                        login = null;
+                        System.out.println("Logout efetuado com sucesso.");
+                        break;
+
+                    case 0:
+                        executando = false;
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida.");
+                }
             }
         }
 

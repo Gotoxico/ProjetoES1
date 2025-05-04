@@ -14,17 +14,46 @@ import java.util.*;
  */
 @Service
 public class EstoqueService {
-    public void adicionarProduto(Estoque estoque, Produto produto) {
+    public boolean adicionarProduto(Estoque estoque, Produto produto) {
         for (Produto p: estoque.getProdutos()){
-            if(p.getNome().equalsIgnoreCase(produto.getNome())){
+            if(p.getCodigoBarras() == produto.getCodigoBarras()){
                 p.setQuantidade(p.getQuantidade() + produto.getQuantidade());
-                return;
+                
+                EtiquetaRFID etiqueta = null;
+                for(int i = 0; i <= produto.getQuantidade(); i++){
+                    Item item = new Item();
+                    for (EtiquetaRFID e : estoque.getEtiquetas()){
+                        if (!e.isAtrelado()){
+                            etiqueta = e;
+                            item.setEtiqueta(etiqueta);
+                            produto.adicionarItens(item);
+                            break;
+                        }
+                    }
+                }
+                return true;
             }
         }
-        estoque.getProdutos().add(produto);
+        return false;
+    }
+    
+    public void adicionarProdutoInexistente(Estoque estoque, Produto produto) {
+        estoque.adicionarProduto(produto);
+        EtiquetaRFID etiqueta = null;
+        for(int i = 0; i <= produto.getQuantidade(); i++){
+            Item item = new Item();
+            for (EtiquetaRFID e : estoque.getEtiquetas()){
+                if (!e.isAtrelado()){
+                    etiqueta = e;
+                    item.setEtiqueta(etiqueta);
+                    produto.adicionarItens(item);
+                    break;
+                }
+            }
+        }
     }
 
-    public void removerProduto(Estoque estoque, Produto produto) {
-        estoque.getProdutos().remove(produto);
+    public boolean removerProduto(Estoque estoque, int codigoBarras) {
+        return estoque.removerProduto(codigoBarras);
     }
 }

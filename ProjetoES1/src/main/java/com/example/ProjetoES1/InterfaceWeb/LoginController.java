@@ -22,6 +22,6 @@ public class LoginController {
 
     @PostMapping("/verificar")
     public boolean verificar(@RequestBody Login login, @RequestParam String usuario, @RequestParam String senha) {
-        return loginService.verificarLogin(login, usuario, senha);
+        return loginService.verificarLogin(usuario, senha);
     }
 }

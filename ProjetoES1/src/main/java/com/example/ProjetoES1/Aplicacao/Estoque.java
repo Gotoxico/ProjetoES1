@@ -6,6 +6,8 @@ package com.example.ProjetoES1.Aplicacao;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.UUID;
 
 /**
  *
@@ -22,6 +24,8 @@ public class Estoque {
     
     private ArrayList<Fornecedor> listaDeFornecedores;
     
+    private ArrayList<EtiquetaRFID> etiquetas;
+    
     @OneToOne(cascade = CascadeType.ALL)
     private Relatorio relatorio;
 
@@ -35,6 +39,14 @@ public class Estoque {
     public Estoque() {
         this.produtos = new ArrayList<>();
         this.listaDeFornecedores = new ArrayList<>();
+        this.etiquetas = new ArrayList<>();
+        
+        for (int i = 0; i <= 50; i++){
+            EtiquetaRFID etiqueta = new EtiquetaRFID();
+            etiqueta.setCodigo(UUID.randomUUID().toString());
+            etiqueta.setAtrelado(false);
+            etiquetas.add(etiqueta);
+        }
     }
     
     
@@ -70,5 +82,32 @@ public class Estoque {
     public void setRelatorio(Relatorio relatorio) {
         this.relatorio = relatorio;
     }
+
+    public ArrayList<EtiquetaRFID> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(ArrayList<EtiquetaRFID> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+    
+    public void adicionarProduto(Produto produto){
+        produtos.add(produto);
+    }
+    
+    public boolean removerProduto(int codigoBarras){
+        Iterator<Produto> iterator = produtos.iterator();
+        while (iterator.hasNext()) {
+            Produto p = iterator.next();
+            if(p.getCodigoBarras() == codigoBarras){
+                p.removerTodosItens();
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
     
 }

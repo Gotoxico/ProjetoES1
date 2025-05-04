@@ -5,6 +5,8 @@
 package com.example.ProjetoES1.Aplicacao;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -18,22 +20,24 @@ public class Produto {
 
     private String nome;
     private int quantidade;
+    private int codigoBarras;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private ArrayList<Item> itens = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private EtiquetaRFID etiqueta;
-
-    public Produto(Long id, String nome, int quantidade, EtiquetaRFID etiqueta) {
+    public Produto(Long id, String nome, int codigoBarras, int quantidade, ArrayList<Item> itens) {
         this.id = id;
         this.nome = nome;
+        this.codigoBarras = codigoBarras;
         this.quantidade = quantidade;
-        this.etiqueta = etiqueta;
+        this.itens = itens;
     }
 
     public Produto() {
     }
     
+ 
     
-
     public Long getId() {
         return id;
     }
@@ -50,6 +54,14 @@ public class Produto {
         this.nome = nome;
     }
 
+    public int getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(int codigoBarras) {
+        this.codigoBarras = codigoBarras;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
@@ -58,13 +70,38 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public EtiquetaRFID getEtiqueta() {
-        return etiqueta;
+    public ArrayList<Item> getItens() {
+        return itens;
     }
 
-    public void setEtiqueta(EtiquetaRFID etiqueta) {
-        this.etiqueta = etiqueta;
+    public void setItens(ArrayList<Item> itens) {
+        this.itens = itens;
+    }
+    
+    public void adicionarItens(Item item){
+        itens.add(item);
+    }
+    
+    public void removerTodosItens() {
+        Iterator<Item> iterator = itens.iterator();
+        while (iterator.hasNext()) {
+            Item i = iterator.next();
+            i.removeEtiqueta();
+            iterator.remove();
+        }
     }
 
     
+    public void removerItem(String codigo) {
+        Iterator<Item> iterator = itens.iterator();
+        while (iterator.hasNext()) {
+            Item i = iterator.next();
+            if (i.getEtiqueta().getCodigo().equals(codigo)) {
+                i.removeEtiqueta();
+                iterator.remove();
+            }
+        }
+    }
+
+
 }

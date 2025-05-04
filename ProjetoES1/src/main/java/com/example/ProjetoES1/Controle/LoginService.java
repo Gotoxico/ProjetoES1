@@ -5,8 +5,8 @@
 package com.example.ProjetoES1.Controle;
 
 import com.example.ProjetoES1.Aplicacao.*;
+import com.example.projetoES1.fakedb.DatabaseFake;
 import org.springframework.stereotype.Service;
-import java.util.*;
 
 /**
  *
@@ -14,7 +14,8 @@ import java.util.*;
  */
 @Service
 public class LoginService {
-    public boolean verificarLogin(Login login, String usuario, String senha) {
-        return login.getUsuario().equals(usuario) && login.getSenha().equals(senha);
+    public boolean verificarLogin(String usuario, String senha) {
+        Login login = DatabaseFake.buscarLoginPorUsuario(usuario);
+        return login != null && login.getSenha().equals(senha);
     }
 }
