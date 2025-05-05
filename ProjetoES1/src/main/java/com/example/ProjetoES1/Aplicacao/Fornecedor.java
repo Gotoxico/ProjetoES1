@@ -5,6 +5,7 @@
 package com.example.ProjetoES1.Aplicacao;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,12 +20,19 @@ public class Fornecedor {
     private String nome;
     private String contato;
     private String cnpj;
+    
+    private ArrayList<Produto> produtos;
 
-    public Fornecedor(Long id, String nome, String contato, String cnpj) {
+    public Fornecedor(Long id, String nome, String contato, String cnpj, ArrayList<Produto> produtos) {
         this.id = id;
         this.nome = nome;
         this.contato = contato;
         this.cnpj = cnpj;
+        this.produtos = produtos;
+    }
+
+    public Fornecedor() {
+        this.produtos = new ArrayList<>();
     }
 
     public Long getId() {
@@ -59,5 +67,12 @@ public class Fornecedor {
         this.cnpj = cnpj;
     }
 
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(ArrayList<Produto> produtos) {
+        this.produtos = produtos;
+    }
     
 }

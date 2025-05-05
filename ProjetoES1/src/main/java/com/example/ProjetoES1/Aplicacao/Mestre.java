@@ -20,6 +20,9 @@ public class Mestre extends Pessoa {
         this.gerentesSupervisionados = gerentesSupervisionados;
     }
 
+    public Mestre() {
+    }
+
     public ArrayList<Gerente> getGerentesSupervisionados() {
         return gerentesSupervisionados;
     }

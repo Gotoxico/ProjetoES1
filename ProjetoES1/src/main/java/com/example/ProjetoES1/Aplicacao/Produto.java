@@ -21,15 +21,17 @@ public class Produto {
     private String nome;
     private int quantidade;
     private int codigoBarras;
+    private Fornecedor fornecedor;
     
     @OneToMany(cascade = CascadeType.ALL)
     private ArrayList<Item> itens = new ArrayList<>();
 
-    public Produto(Long id, String nome, int codigoBarras, int quantidade, ArrayList<Item> itens) {
+    public Produto(Long id, String nome, int codigoBarras, int quantidade, Fornecedor fornecedor, ArrayList<Item> itens) {
         this.id = id;
         this.nome = nome;
         this.codigoBarras = codigoBarras;
         this.quantidade = quantidade;
+        this.fornecedor = fornecedor;
         this.itens = itens;
     }
 
@@ -68,6 +70,14 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public ArrayList<Item> getItens() {

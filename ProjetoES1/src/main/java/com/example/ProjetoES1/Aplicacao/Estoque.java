@@ -21,7 +21,7 @@ public class Estoque {
     
     @OneToMany(cascade = CascadeType.ALL)
     private ArrayList<Produto> produtos;
-    
+
     private ArrayList<Fornecedor> listaDeFornecedores;
     
     private ArrayList<EtiquetaRFID> etiquetas;

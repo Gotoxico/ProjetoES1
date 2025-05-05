@@ -18,6 +18,9 @@ public class Operador extends Pessoa {
     public Operador(Gerente supervisor) {
         this.supervisor = supervisor;
     } 
+
+    public Operador() {
+    }
     
     public Gerente getSupervisor() {
         return supervisor;
