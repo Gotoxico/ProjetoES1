@@ -6,6 +6,7 @@ package com.example.ProjetoES1.Aplicacao;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Gerente extends Pessoa {
     private Mestre supervisor;
 
     @OneToMany(mappedBy = "supervisor")
-    private ArrayList<Operador> operadoresSupervisionados;
+    private List<Operador> operadoresSupervisionados;
 
     public Gerente(Mestre supervisor, ArrayList<Operador> operadoresSupervisionados) {
         this.supervisor = supervisor;
@@ -32,7 +33,7 @@ public class Gerente extends Pessoa {
         this.supervisor = supervisor;
     }
 
-    public ArrayList<Operador> getOperadoresSupervisionados() {
+    public List<Operador> getOperadoresSupervisionados() {
         return operadoresSupervisionados;
     }
 

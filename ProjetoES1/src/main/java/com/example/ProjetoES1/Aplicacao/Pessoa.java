@@ -5,7 +5,6 @@
 package com.example.ProjetoES1.Aplicacao;
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -24,10 +23,6 @@ public abstract class Pessoa {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {

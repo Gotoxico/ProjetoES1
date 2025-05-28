@@ -12,17 +12,20 @@ package com.example.ProjetoES1.InterfaceConsole;
 import com.example.ProjetoES1.Aplicacao.Estoque;
 import com.example.ProjetoES1.Aplicacao.Login;
 import com.example.ProjetoES1.Aplicacao.Produto;
-import com.example.ProjetoES1.Controle.EstoqueService;
+import com.example.ProjetoES1.Controle.*;
 import com.example.ProjetoES1.Controle.LoginService;
 import com.example.ProjetoES1.Controle.RelatorioService;
+
 
 import java.util.Scanner;
 
 public class AppConsole {
 
-    private static EstoqueService estoqueService = new EstoqueService();
+    private static InsercaoService insercaoService = new InsercaoService();
     private static LoginService loginService = new LoginService();
     private static RelatorioService relatorioService = new RelatorioService();
+    private static RemocaoService remocaoService = new RemocaoService();
+    
 
     private static Estoque estoque = new Estoque();
     private static Login login = null;
@@ -79,13 +82,13 @@ public class AppConsole {
                         System.out.print("Quantidade: ");
                         produto.setQuantidade(scanner.nextInt());
 
-                        boolean produtoNovo = estoqueService.adicionarProduto(estoque, produto);
+                        boolean produtoNovo = insercaoService.adicionarProduto(estoque, produto);
                         
                         if (produtoNovo == false){
                             scanner.nextLine();
                             System.out.println("Nome do produto: ");
                             produto.setNome(scanner.nextLine());
-                            estoqueService.adicionarProdutoInexistente(estoque, produto);
+                            insercaoService.adicionarProdutoInexistente(estoque, produto);
                         }
                         
                         System.out.println("Produto adicionado com sucesso.");
@@ -95,7 +98,7 @@ public class AppConsole {
                         System.out.print("Codigo de barras do produto a remover: ");
                         int codigoBarrasParaRemover = scanner.nextInt();
                         
-                        boolean sucesso = estoqueService.removerProduto(estoque, codigoBarrasParaRemover);
+                        boolean sucesso = remocaoService.removerProduto(estoque, codigoBarrasParaRemover);
 
                         if (sucesso) {
                             System.out.println("Produto removido com sucesso.");
