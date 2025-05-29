@@ -1,46 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.ES1Project.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
 
-/**
- *
- * @author kauan
- */
 @Entity
 public class Gerente extends Pessoa {
+
     @ManyToOne
-    private Mestre supervisor;
+    @JoinColumn(name = "mestre_id") // isso cria a FK
+    private Mestre mestre;
 
-    @OneToMany(mappedBy = "supervisor")
-    private ArrayList<Operador> operadoresSupervisionados;
+    public Gerente() {}
 
-    public Gerente(Mestre supervisor, ArrayList<Operador> operadoresSupervisionados) {
-        this.supervisor = supervisor;
-        this.operadoresSupervisionados = operadoresSupervisionados;
+    public Gerente(Mestre mestre) {
+        this.mestre = mestre;
     }
 
-    public Mestre getSupervisor() {
-        return supervisor;
+    public Mestre getMestre() {
+        return mestre;
     }
 
-    public void setSupervisor(Mestre supervisor) {
-        this.supervisor = supervisor;
-    }
-
-    public ArrayList<Operador> getOperadoresSupervisionados() {
-        return operadoresSupervisionados;
-    }
-
-    public void setOperadoresSupervisionados(ArrayList<Operador> operadoresSupervisionados) {
-        this.operadoresSupervisionados = operadoresSupervisionados;
+    public void setMestre(Mestre mestre) {
+        this.mestre = mestre;
     }
 }
-
-    

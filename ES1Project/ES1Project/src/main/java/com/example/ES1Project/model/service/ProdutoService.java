@@ -4,8 +4,15 @@
  */
 package com.example.ES1Project.model.service;
 
+import com.example.ES1Project.dto.ProdutoDTO;
+import com.example.ES1Project.model.Estoque;
+import com.example.ES1Project.model.Fornecedor;
 import com.example.ES1Project.model.Produto;
+import com.example.ES1Project.repository.EstoqueRepository;
+import com.example.ES1Project.repository.FornecedorRepository;
+import com.example.ES1Project.repository.ItemRepository;
 import com.example.ES1Project.repository.ProdutoRepository;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +25,16 @@ import org.springframework.stereotype.Service;
 public class ProdutoService {
     
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private final ProdutoRepository produtoRepository;
+    
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
+    
+    @Autowired
+    private EstoqueRepository estoqueRepository;
+    
+    @Autowired
+    private ItemRepository itemRepository;
     
     public ProdutoService(ProdutoRepository produtoRepository){
         this.produtoRepository = produtoRepository;
@@ -32,15 +48,32 @@ public class ProdutoService {
                 .orElseThrow(() -> new RuntimeException("Produto com ID " + id + " não encontrado."));
     }
 
-    public Produto salvarProduto(Produto produto) {
+    public Produto salvarProduto(ProdutoDTO dto) {
+        Estoque estoque = estoqueRepository.findById(dto.estoque_id)
+            .orElseThrow(() -> new RuntimeException("Estoque não encontrado com ID: " + dto.estoque_id));
+        
+        Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor_id)
+                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado com ID: " + dto.estoque_id));
+
+        
+        Produto produto = new Produto();
+        produto.setNome(dto.nome);
+        produto.setCodigoBarras(dto.codigoBarras);
+        produto.setEstoque(estoque);
+        produto.setFornecedor(fornecedor);
+        
         return produtoRepository.save(produto);
     }
 
+    @Transactional
     public void deletarProduto(Long id) {
-
         if (!produtoRepository.existsById(id)) {
             throw new RuntimeException("Produto com ID " + id + " não existe.");
         }
+
+        itemRepository.deleteByProdutoId(id);
+
         produtoRepository.deleteById(id);
     }
+
 }

@@ -14,12 +14,16 @@ public class Relatorio {
 
     private LocalDate dataGeracao;
 
-    // Construtores
+    @ManyToOne
+    @JoinColumn(name = "estoque_id", nullable = false) // FK para Estoque
+    private Estoque estoque;
+
     public Relatorio() {}
 
-    public Relatorio(String conteudo, LocalDate dataGeracao) {
+    public Relatorio(String conteudo, LocalDate dataGeracao, Estoque estoque) {
         this.conteudo = conteudo;
         this.dataGeracao = dataGeracao;
+        this.estoque = estoque;
     }
 
     // Getters e Setters
@@ -41,5 +45,13 @@ public class Relatorio {
 
     public void setDataGeracao(LocalDate dataGeracao) {
         this.dataGeracao = dataGeracao;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
     }
 }

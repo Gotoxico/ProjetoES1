@@ -9,14 +9,19 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "etiqueta_id") // Cria coluna de chave estrangeira mais explícita
+    @OneToOne
+    @JoinColumn(name = "etiqueta_id", nullable = false)
     private EtiquetaRFID etiqueta;
+
+    @ManyToOne
+    @JoinColumn(name = "produto_id", nullable = false)
+    private Produto produto;
 
     public Item() {}
 
-    public Item(EtiquetaRFID etiqueta) {
+    public Item(EtiquetaRFID etiqueta, Produto produto) {
         this.etiqueta = etiqueta;
+        this.produto = produto;
     }
 
     public Long getId() {
@@ -29,6 +34,14 @@ public class Item {
 
     public void setEtiqueta(EtiquetaRFID etiqueta) {
         this.etiqueta = etiqueta;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public void removeEtiqueta() {

@@ -1,9 +1,6 @@
 package com.example.ES1Project.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Fornecedor {
@@ -16,20 +13,19 @@ public class Fornecedor {
     private String contato;
     private String cnpj;
 
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Produto> produtos = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "estoque_id", nullable = false) // FK para Estoque
+    private Estoque estoque;
 
-    public Fornecedor() {
-        // Construtor padrão exigido pelo JPA
-    }
+ 
+    public Fornecedor() {}
 
-    public Fornecedor(Long id, String nome, String contato, String cnpj, List<Produto> produtos) {
+    public Fornecedor(Long id, String nome, String contato, String cnpj, Estoque estoque) {
         this.id = id;
         this.nome = nome;
         this.contato = contato;
         this.cnpj = cnpj;
-        this.produtos = produtos;
+        this.estoque = estoque;
     }
 
     // Getters e setters
@@ -65,11 +61,11 @@ public class Fornecedor {
         this.cnpj = cnpj;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Estoque getEstoque() {
+        return estoque;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
     }
 }

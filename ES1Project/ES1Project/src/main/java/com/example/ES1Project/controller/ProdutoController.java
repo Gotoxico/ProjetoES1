@@ -4,6 +4,7 @@
  */
 package com.example.ES1Project.controller;
 
+import com.example.ES1Project.dto.ProdutoDTO;
 import com.example.ES1Project.model.Produto;
 import com.example.ES1Project.model.service.ProdutoService;
 import java.util.List;
@@ -42,8 +43,8 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto criarProduto(@RequestBody Produto produto) {
-        return produtoService.salvarProduto(produto);
+    public Produto criarProduto(@RequestBody ProdutoDTO dto) {
+        return produtoService.salvarProduto(dto);
     }
     
     @DeleteMapping("/{id}")

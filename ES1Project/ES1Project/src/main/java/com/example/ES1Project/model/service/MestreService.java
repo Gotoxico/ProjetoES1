@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MestreService {
     @Autowired
-    public MestreRepository mestreRepository;
+    public final MestreRepository mestreRepository;
     
     
     public MestreService(MestreRepository mestreRepository){

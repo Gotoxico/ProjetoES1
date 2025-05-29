@@ -4,7 +4,10 @@
  */
 package com.example.ES1Project.model.service;
 
+import com.example.ES1Project.dto.FornecedorDTO;
+import com.example.ES1Project.model.Estoque;
 import com.example.ES1Project.model.Fornecedor;
+import com.example.ES1Project.repository.EstoqueRepository;
 import com.example.ES1Project.repository.FornecedorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,14 @@ import org.springframework.stereotype.Service;
 public class FornecedorService {
     
     @Autowired
-    private FornecedorRepository fornecedorRepository;
+    private final FornecedorRepository fornecedorRepository;
+    
+    @Autowired
+    private final EstoqueRepository estoqueRepository;
         
-    public FornecedorService(FornecedorRepository fornecedorRepository){
+    public FornecedorService(FornecedorRepository fornecedorRepository, EstoqueRepository estoqueRepository){
         this.fornecedorRepository = fornecedorRepository;
+        this.estoqueRepository = estoqueRepository;
     }
     
     public List<Fornecedor> listarFornecedores(){ 
@@ -33,7 +40,16 @@ public class FornecedorService {
                 .orElseThrow(() -> new RuntimeException("Fornecedor com ID " + id + " não encontrado."));
     }
     
-    public Fornecedor salvarFornecedor(Fornecedor fornecedor) {
+    public Fornecedor salvarFornecedor(FornecedorDTO dto) {
+        Estoque estoque = estoqueRepository.findById(dto.estoque_id)
+            .orElseThrow(() -> new RuntimeException("Estoque não encontrado com ID: " + dto.estoque_id));
+
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setNome(dto.nome);
+        fornecedor.setContato(dto.contato);
+        fornecedor.setCnpj(dto.cnpj);
+        fornecedor.setEstoque(estoque);
+
         return fornecedorRepository.save(fornecedor);
     }
 

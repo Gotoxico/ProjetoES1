@@ -2,6 +2,7 @@ package com.example.ES1Project.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,27 +16,26 @@ public class Produto {
 
     private String nome;
 
-    private int quantidade;
-
     private int codigoBarras;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "fornecedor_id", nullable = false)
     @JsonBackReference
     private Fornecedor fornecedor;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "produto_id") // Cria a FK em Item apontando para Produto
-    private List<Item> itens = new ArrayList<>();
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "estoque_id", nullable = false)
+    private Estoque estoque;
 
+    
     // Construtores
     public Produto() {}
 
-    public Produto(String nome, int codigoBarras, int quantidade, Fornecedor fornecedor) {
+    public Produto(String nome, int codigoBarras, Fornecedor fornecedor, Estoque estoque) {
         this.nome = nome;
         this.codigoBarras = codigoBarras;
-        this.quantidade = quantidade;
         this.fornecedor = fornecedor;
+        this.estoque = estoque;
     }
 
     // Getters e Setters
@@ -59,14 +59,6 @@ public class Produto {
         this.codigoBarras = codigoBarras;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
     public Fornecedor getFornecedor() {
         return fornecedor;
     }
@@ -75,34 +67,12 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public List<Item> getItens() {
-        return itens;
+    public Estoque getEstoque() {
+        return estoque;
     }
 
-    public void setItens(List<Item> itens) {
-        this.itens = itens;
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
     }
 
-    // Métodos auxiliares
-    public void adicionarItem(Item item) {
-        itens.add(item);
-    }
-
-    public void removerItemPorCodigo(String codigo) {
-        Iterator<Item> iterator = itens.iterator();
-        while (iterator.hasNext()) {
-            Item item = iterator.next();
-            if (item.getEtiqueta().getCodigo().equals(codigo)) {
-                item.removeEtiqueta();
-                iterator.remove();
-            }
-        }
-    }
-
-    public void removerTodosItens() {
-        for (Item item : itens) {
-            item.removeEtiqueta();
-        }
-        itens.clear();
-    }
 }

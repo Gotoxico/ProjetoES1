@@ -5,6 +5,7 @@
 package com.example.ES1Project.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 /**
@@ -14,20 +15,21 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Operador extends Pessoa {
     @ManyToOne
-    private Gerente supervisor;
+    @JoinColumn(name = "gerente_id")
+    private Gerente gerente;
 
-    public Operador(Gerente supervisor) {
-        this.supervisor = supervisor;
+    public Operador(Gerente gerente) {
+        this.gerente = gerente;
     } 
 
     public Operador() {
     }
     
-    public Gerente getSupervisor() {
-        return supervisor;
+    public Gerente getGerente() {
+        return gerente;
     }
 
-    public void setSupervisor(Gerente supervisor) {
-        this.supervisor = supervisor;
+    public void setGerente(Gerente gerente) {
+        this.gerente = gerente;
     }
 }

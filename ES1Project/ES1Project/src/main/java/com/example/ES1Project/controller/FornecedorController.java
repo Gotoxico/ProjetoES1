@@ -4,8 +4,8 @@
  */
 package com.example.ES1Project.controller;
 
+import com.example.ES1Project.dto.FornecedorDTO;
 import com.example.ES1Project.model.Fornecedor;
-import com.example.ES1Project.model.Produto;
 import com.example.ES1Project.model.service.FornecedorService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/fornecedores")
 public class FornecedorController {
     
-    private FornecedorService fornecedorService;
+    private final FornecedorService fornecedorService;
         
     public FornecedorController(FornecedorService fornecedorService){
         this.fornecedorService = fornecedorService;
@@ -43,8 +43,9 @@ public class FornecedorController {
     }
 
     @PostMapping
-    public Fornecedor criarFornecedor(@RequestBody Fornecedor fornecedor) {
-        return fornecedorService.salvarFornecedor(fornecedor);
+    public Fornecedor criarFornecedor(@RequestBody FornecedorDTO dto) {
+        
+        return fornecedorService.salvarFornecedor(dto);
     }
     
     @DeleteMapping("/{id}")
