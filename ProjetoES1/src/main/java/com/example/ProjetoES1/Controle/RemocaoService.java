@@ -3,19 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.ProjetoES1.Controle;
-
 import com.example.ProjetoES1.Aplicacao.*;
-import org.springframework.stereotype.Service;
 import java.util.*;
+import org.springframework.stereotype.Service;
+
 
 /**
  *
- * @author rodri
+ * @author kauan
  */
-@Service
-public class EstoqueService {
-   
-
+public class RemocaoService {
     public boolean removerProduto(Estoque estoque, int codigoBarras) {
         return estoque.removerProduto(codigoBarras);
     }

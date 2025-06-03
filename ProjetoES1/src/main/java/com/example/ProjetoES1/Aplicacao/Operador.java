@@ -11,6 +11,7 @@ import jakarta.persistence.*;
  * @author rodri
  */
 @Entity
+
 public class Operador extends Pessoa {
     @ManyToOne
     private Gerente supervisor;

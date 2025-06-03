@@ -18,10 +18,10 @@ import com.example.ProjetoES1.Controle.*;
 public class EstoqueController {
 
     @Autowired
-    private EstoqueService estoqueService;
+    private InsercaoService insercaoService;
 
     @PostMapping("/adicionar")
     public void adicionarProduto(@RequestBody Estoque estoque, @RequestBody Produto produto) {
-        estoqueService.adicionarProduto(estoque, produto);
+        insercaoService.adicionarProduto(estoque, produto);
     }
 }
