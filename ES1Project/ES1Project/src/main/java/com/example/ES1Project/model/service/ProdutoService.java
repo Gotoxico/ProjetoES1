@@ -4,6 +4,7 @@
  */
 package com.example.ES1Project.model.service;
 
+import com.example.ES1Project.Session.SessionManager;
 import com.example.ES1Project.dto.ProdutoDTO;
 import com.example.ES1Project.model.Estoque;
 import com.example.ES1Project.model.Fornecedor;
@@ -12,10 +13,14 @@ import com.example.ES1Project.repository.EstoqueRepository;
 import com.example.ES1Project.repository.FornecedorRepository;
 import com.example.ES1Project.repository.ItemRepository;
 import com.example.ES1Project.repository.ProdutoRepository;
+import com.example.ES1Project.utils.PermissaoUtils;
+import static com.example.ES1Project.utils.PermissaoUtils.validarPermissao;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -36,6 +41,7 @@ public class ProdutoService {
     @Autowired
     private ItemRepository itemRepository;
     
+        
     public ProdutoService(ProdutoRepository produtoRepository){
         this.produtoRepository = produtoRepository;
     }
@@ -49,11 +55,13 @@ public class ProdutoService {
     }
 
     public Produto salvarProduto(ProdutoDTO dto) {
+        PermissaoUtils.validarPermissao("Gerente","Mestre");
+        
         Estoque estoque = estoqueRepository.findById(dto.estoque_id)
-            .orElseThrow(() -> new RuntimeException("Estoque não encontrado com ID: " + dto.estoque_id));
+            .orElseThrow(() ->  new ResponseStatusException(HttpStatus.NOT_FOUND, "Estoque não encontrado com ID: " + dto.estoque_id));
         
         Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor_id)
-                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado com ID: " + dto.estoque_id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado com ID: " + dto.estoque_id));
 
         
         Produto produto = new Produto();
@@ -67,6 +75,8 @@ public class ProdutoService {
 
     @Transactional
     public void deletarProduto(Long id) {
+        
+        PermissaoUtils.validarPermissao("Gerente", "Mestre");
         if (!produtoRepository.existsById(id)) {
             throw new RuntimeException("Produto com ID " + id + " não existe.");
         }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api")
 public class HelloController {
     @GetMapping("/hello")
     public String hello() {

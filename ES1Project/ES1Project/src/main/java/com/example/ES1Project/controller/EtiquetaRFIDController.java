@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api/etiqueta")
+@RequestMapping("/etiqueta")
 public class EtiquetaRFIDController {
     
     private final EtiquetaRFIDService etiquetaRFIDService;

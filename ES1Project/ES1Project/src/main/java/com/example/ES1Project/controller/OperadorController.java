@@ -4,9 +4,9 @@
  */
 package com.example.ES1Project.controller;
 
-import com.example.ES1Project.dto.ProdutoDTO;
-import com.example.ES1Project.model.Produto;
-import com.example.ES1Project.model.service.ProdutoService;
+import com.example.ES1Project.dto.OperadorDTO;
+import com.example.ES1Project.model.Operador;
+import com.example.ES1Project.model.service.OperadorService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,34 +22,35 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/produto")
-public class ProdutoController {
+@RequestMapping("/operador")
+public class OperadorController {
     
-    private final ProdutoService produtoService;
-
-    public ProdutoController(ProdutoService produtoService) {
-        this.produtoService = produtoService;
+    private final OperadorService operadorService;
+    
+    public OperadorController(OperadorService operadorService){
+        this.operadorService = operadorService;
     }
+    
 
     @GetMapping
-    public List<Produto> listarProdutos() {
-        return produtoService.listarProdutos();
+    public List<Operador> listarOperadores() {
+        return operadorService.listarOperadores();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarProduto(@PathVariable Long id) {
-        Produto produto = produtoService.buscarPorId(id);
-        return ResponseEntity.ok(produto);
+    public ResponseEntity<?> buscarOperador(@PathVariable Long id) {
+        Operador operador = operadorService.buscarPorId(id);
+        return ResponseEntity.ok(operador);
     }
 
     @PostMapping
-    public Produto criarProduto(@RequestBody ProdutoDTO dto) {
-        return produtoService.salvarProduto(dto);
+    public Operador criarOperador(@RequestBody OperadorDTO dto) {
+        return operadorService.salvarOperador(dto);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarProduto(@PathVariable Long id) {
-        produtoService.deletarProduto(id);
+    public ResponseEntity<Void> deletarOperador(@PathVariable Long id) {
+        operadorService.deletarOperador(id);
         return ResponseEntity.noContent().build();
     }
  

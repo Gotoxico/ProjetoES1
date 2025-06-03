@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/api/item")
+@RequestMapping("/item")
 public class ItemController {
     
     private final ItemService itemService;

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api/fornecedores")
+@RequestMapping("/fornecedor")
 public class FornecedorController {
     
     private final FornecedorService fornecedorService;

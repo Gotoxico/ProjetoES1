@@ -4,6 +4,7 @@
  */
 package com.example.ES1Project.controller;
 
+import com.example.ES1Project.dto.GerenteDTO;
 import com.example.ES1Project.model.Gerente;
 import com.example.ES1Project.model.service.GerenteService;
 import java.util.List;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api/gerentes")
+@RequestMapping("/gerente")
 public class GerenteController {
     
     private final GerenteService gerenteService;
@@ -42,8 +43,8 @@ public class GerenteController {
     }
 
     @PostMapping
-    public Gerente criarGerente(@RequestBody Gerente gerente) {
-        return gerenteService.salvarGerente(gerente);
+    public Gerente criarGerente(@RequestBody GerenteDTO dto) {
+        return gerenteService.salvarGerente(dto);
     }
     
     @DeleteMapping("/{id}")

@@ -17,6 +17,8 @@ public class Pessoa {
     @ManyToOne
     @JoinColumn(name = "estoque_id", nullable = false) // cria a FK para Estoque
     private Estoque estoque;
+    
+    private String senha;
 
     // Getters e Setters
     public Long getId() {
@@ -46,4 +48,14 @@ public class Pessoa {
     public void setEstoque(Estoque estoque) {
         this.estoque = estoque;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
 }

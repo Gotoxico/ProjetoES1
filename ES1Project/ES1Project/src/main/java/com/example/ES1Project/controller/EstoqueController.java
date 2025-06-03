@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api/estoque")
+@RequestMapping("/estoque")
 public class EstoqueController {
     
     private final EstoqueService estoqueService;

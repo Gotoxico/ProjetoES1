@@ -4,11 +4,16 @@
  */
 package com.example.ES1Project.model.service;
 
+import com.example.ES1Project.dto.MestreDTO;
+import com.example.ES1Project.model.Estoque;
 import com.example.ES1Project.model.Mestre;
+import com.example.ES1Project.repository.EstoqueRepository;
 import com.example.ES1Project.repository.MestreRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -19,9 +24,12 @@ public class MestreService {
     @Autowired
     public final MestreRepository mestreRepository;
     
+    @Autowired 
+    private final EstoqueRepository estoqueRepository;
     
-    public MestreService(MestreRepository mestreRepository){
+    public MestreService(MestreRepository mestreRepository, EstoqueRepository estoqueRepository ){
         this.mestreRepository = mestreRepository;
+        this.estoqueRepository = estoqueRepository; 
     }
     
     public List<Mestre> listarMestres(){
@@ -33,7 +41,15 @@ public class MestreService {
                 .orElseThrow(() -> new RuntimeException("Mestre com ID " + id + " não encontrado."));
     }
 
-    public Mestre salvarMestre(Mestre mestre) {
+    public Mestre salvarMestre(MestreDTO dto) {
+        Estoque estoque = estoqueRepository.findById(dto.getEstoque_id())
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Estoque com id " + dto.getEstoque_id() +" não encontrado!"));
+        
+        Mestre mestre = new Mestre();
+        mestre.setCpf(dto.getCpf());
+        mestre.setEstoque(estoque);
+        mestre.setNome(dto.getNome());
+        mestre.setSenha(dto.getSenha());
         return mestreRepository.save(mestre);
     }
 

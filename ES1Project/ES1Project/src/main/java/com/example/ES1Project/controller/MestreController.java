@@ -4,8 +4,8 @@
  */
 package com.example.ES1Project.controller;
 
+import com.example.ES1Project.dto.MestreDTO;
 import com.example.ES1Project.model.Mestre;
-import com.example.ES1Project.model.Produto;
 import com.example.ES1Project.model.service.MestreService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author kauan
  */
 @RestController
-@RequestMapping("/api/mestres")
+@RequestMapping("/mestre")
 public class MestreController {
     
     private final MestreService mestreService;
@@ -43,8 +43,8 @@ public class MestreController {
     }
 
     @PostMapping
-    public Mestre criarMestre(@RequestBody Mestre mestre) {
-        return mestreService.salvarMestre(mestre);
+    public Mestre criarMestre(@RequestBody MestreDTO dto) {
+        return mestreService.salvarMestre(dto);
     }
     
     @DeleteMapping("/{id}")
