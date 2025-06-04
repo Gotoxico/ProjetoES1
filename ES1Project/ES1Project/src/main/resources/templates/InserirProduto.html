@@ -5,7 +5,7 @@
 <head>
     <title>Inserir Produto</title>
     <!-- Link to your CSS files -->
-         <link rel="stylesheet" href="@{/css/InserirProduto.css}">  
+         <link rel="stylesheet" th:href="@{/css/InserirProduto.css}">  
 
 </head>
 <body>
@@ -13,7 +13,7 @@
     <header class="header">
         <div class="header-content">
             <!-- Navigation will be rendered here, likely through a link or another template -->
-            <th:block th:replace="fragments/navigation :: navigation"></th:block>  <!-- Example using Thymeleaf fragments -->
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>   Example using Thymeleaf fragments -->
         </div>
     </header>
 
@@ -49,11 +49,14 @@
                     <thead>
                         <tr>
                             <th>Nome Fornecedor</th>
+                            <th>CNPJ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="fornecedor : ${fornecedores}">  <!-- Iterate through the fornecedores list -->
-                            <td><span th:text="${fornecedor.nomeFornecedor}"></span></td>
+                            <td><span th:text="${fornecedor.nome}"></span></td>
+                            <td><span th:text="${fornecedor.cnpj}"></span></td>
+
                         </tr>
                     </tbody>
                 </table>

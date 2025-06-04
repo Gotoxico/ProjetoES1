@@ -5,10 +5,12 @@
 package com.example.ES1Project.model.service;
 
 import com.example.ES1Project.dto.FornecedorDTO;
+import com.example.ES1Project.dto.RelatorioDTO;
 import com.example.ES1Project.model.Estoque;
 import com.example.ES1Project.model.Fornecedor;
 import com.example.ES1Project.repository.EstoqueRepository;
 import com.example.ES1Project.repository.FornecedorRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,9 +33,21 @@ public class FornecedorService {
         this.estoqueRepository = estoqueRepository;
     }
     
-    public List<Fornecedor> listarFornecedores(){ 
-        return fornecedorRepository.findAll();
-    }
+   public List<FornecedorDTO> listarFornecedores() {
+    List<Fornecedor> fornecedores = fornecedorRepository.findAll();
+
+    return fornecedores.stream().map(fornecedor -> {
+        Long idEstoque = fornecedor.getEstoque() != null ? fornecedor.getEstoque().getId(): 000;
+
+        return new FornecedorDTO(
+            fornecedor.getNome(),
+            fornecedor.getContato(),
+            fornecedor.getCnpj(),
+            idEstoque
+        );
+    }).toList();
+}
+
     
     public Fornecedor buscarPorId (Long id){
         return fornecedorRepository.findById(id)

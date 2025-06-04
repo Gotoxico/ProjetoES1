@@ -5,7 +5,7 @@
 <head>
     <title>Inserir Gerente</title>
     <!-- Link to your CSS files -->
-          <link rel="stylesheet" href="@{/css/InserirGerente.css}">  
+          <link rel="stylesheet" th:href="@{/css/InserirGerente.css}">  
 
 
 </head>
@@ -14,7 +14,7 @@
     <header class="header">
         <div class="header-content">
             <!-- Navigation will be rendered here -->
-            <th:block th:replace="fragments/navigation :: navigation"></th:block>
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
         </div>
     </header>
 
@@ -45,8 +45,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="operador : ${operadoresSelecionados}">
-                        <td><span th:text="${operador.nomeOperador}"></span></td>
+                    <tr th:each="operador : ${operadores}">
+                        <td><span th:text="${operador.nome}"></span></td>
                         <td><span th:text="${operador.cpf}"></span></td>
                     </tr>
                 </tbody>

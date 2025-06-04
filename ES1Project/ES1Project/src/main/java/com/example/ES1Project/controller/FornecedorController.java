@@ -32,7 +32,7 @@ public class FornecedorController {
     }
     
     @GetMapping
-    public List<Fornecedor> listarProdutos() {
+    public List<FornecedorDTO> listarProdutos() {
         return fornecedorService.listarFornecedores();
     }
 

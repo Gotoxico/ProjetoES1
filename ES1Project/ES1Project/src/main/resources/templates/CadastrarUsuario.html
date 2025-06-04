@@ -5,14 +5,14 @@
 <head>
     <title>Cadastrar Usuário</title>
     <!-- Link to your CSS files -->
-       <link rel="stylesheet" href="@{/css/CadastrarUsuario.css}">  
+       <link rel="stylesheet" th:href="@{/css/CadastrarUsuario.css}">  
 </head>
 <body>
 
     <header class="header">
         <div class="header-content">
             <!-- Navigation will be rendered here, likely through a link or another template -->
-            <th:block th:replace="fragments/navigation :: navigation"></th:block>  <!-- Example using Thymeleaf fragments -->
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>   Example using Thymeleaf fragments -->
         </div>
     </header>
 
