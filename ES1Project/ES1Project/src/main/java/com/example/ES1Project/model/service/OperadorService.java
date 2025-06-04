@@ -37,8 +37,24 @@ public class OperadorService {
         this.operadorRepository = operadorRepository;
     }
     
-    public List<Operador> listarOperadores(){
-        return operadorRepository.findAll();
+    public List<OperadorDTO> listarOperadores(){
+        List<Operador> operadores = operadorRepository.findAll();
+
+        return operadores.stream().map(operador -> {
+            Long estoqueId = operador.getEstoque() != null ? 
+                           operador.getEstoque().getId(): 0L;
+
+            Long gerenteId =  operador.getGerente().getId();
+
+            return new OperadorDTO(
+                operador.getNome(),
+                operador.getCpf(),
+                operador.getSenha(),
+                estoqueId,
+                gerenteId
+            );
+        }).toList();
+        
     }
     
      public Operador buscarPorId(Long id) {

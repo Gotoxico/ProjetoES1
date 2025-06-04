@@ -5,14 +5,14 @@
 <head>
     <title>Eliminar Produto</title>
     <!-- Link to your CSS files -->
-       <link rel="stylesheet" href="@{/css/EliminarProduto.css}">  
+       <link rel="stylesheet" th:href="@{/css/EliminarProduto.css}">  
 </head>
 <body>
 
     <header class="header">
         <div class="header-content">
             <!-- Navigation will be rendered here -->
-            <th:block th:replace="fragments/navigation :: navigation"></th:block>
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
         </div>
     </header>
 
@@ -44,11 +44,14 @@
                 <thead>
                     <tr>
                         <th>Nome Fornecedor</th>
+                        <th>CNPJ</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="fornecedor : ${fornecedores}">
-                        <td><span th:text="${fornecedor.nomeFornecedor}"></span></td>
+                    <tr th:each="fornecedor : ${fornecedorData}">
+                        <td><span th:text="${fornecedor.nome}"></span></td>
+                        <td><span th:text="${fornecedor.cnpj}"></span></td>
+
                     </tr>
                 </tbody>
             </table>

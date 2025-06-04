@@ -5,7 +5,7 @@
 <head>
     <title>Inserir Operador</title>
     <!-- Link to your CSS files -->
-          <link rel="stylesheet" href="@{/css/InserirOperador.css}">  
+          <link rel="stylesheet" th:href="@{/css/InserirOperador.css}">  
 
 </head>
 <body>
@@ -13,7 +13,7 @@
     <header class="header">
         <div class="header-content">
             <!-- Navigation will be rendered here -->
-            <th:block th:replace="fragments/navigation :: navigation"></th:block>
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
         </div>
     </header>
 

@@ -33,7 +33,7 @@ public class OperadorController {
     
 
     @GetMapping
-    public List<Operador> listarOperadores() {
+    public List<OperadorDTO> listarOperadores() {
         return operadorService.listarOperadores();
     }
 
