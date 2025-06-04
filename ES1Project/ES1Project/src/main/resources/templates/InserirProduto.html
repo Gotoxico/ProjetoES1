@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org/extras/thymeleaf-spring.xsd">
+<head>
+    <title>Inserir Produto</title>
+    <!-- Link to your CSS files -->
+         <link rel="stylesheet" href="@{/css/InserirProduto.css}">  
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <!-- Navigation will be rendered here, likely through a link or another template -->
+            <th:block th:replace="fragments/navigation :: navigation"></th:block>  <!-- Example using Thymeleaf fragments -->
+        </div>
+    </header>
+
+    <main>
+        <h1>Inserir Produto</h1>
+
+        <div class="form-container">
+            <div class="form-fields">
+                <div class="Formfield">
+                    <label for="nomeProduto">Nome Produto:</label>
+                    <input type="text" id="nomeProduto" class="Forminput" name="nomeProduto"/>
+                </div>
+
+                <div class="Formfield">
+                    <label for="codigoBarras">Código Barras:</label>
+                    <input type="text" id="codigoBarras" class="Forminput" name="codigoBarras"/>
+                </div>
+
+                <div class="Formfield">
+                    <label for="nomeFornecedor">Nome Fornecedor:</label>
+                    <input type="text" id="nomeFornecedor" class="Forminput" name="nomeFornecedor"/>
+                </div>
+
+                <div class="Formfield">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" class="Forminput" name="quantidade"/>
+                </div>
+            </div>
+
+            <div class="supplier-table">
+                <h2>Fornecedores</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome Fornecedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="fornecedor : ${fornecedores}">  <!-- Iterate through the fornecedores list -->
+                            <td><span th:text="${fornecedor.nomeFornecedor}"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="SendButton" onclick="inserirProduto()">Inserir</button>  <!-- JavaScript function call -->
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        </div>
+    </footer>
+
+    <script>
+      function inserirProduto() {
+          // You'll need to implement the actual submission logic here,
+          // likely using JavaScript (e.g., AJAX) to send the data to your backend.
+          alert("InserirProduto function called. Implement your submission logic here.");
+      }
+    </script>
+
+</body>
+</html>

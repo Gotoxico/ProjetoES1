@@ -1,0 +1,73 @@
+/* General Container Styling */
+.container {
+    max-width: 1920px; /* Or whatever max width you want */
+    margin: 0 auto;  /* Center the content */
+    padding: 20px;
+}
+
+/* Form Area Styling */
+.add-operator-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.Formfield {
+    margin-bottom: 15px; /* Spacing between form fields */
+}
+
+.Forminput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;  /* Include padding and border in element's total width */
+}
+
+.SendButton {
+    background-color: #FE7743; /* Your primary color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto;  /* Allow button to size based on content */
+}
+
+.SendButton:hover {
+    background-color: #e65a3c; /* Slightly darker shade for hover effect */
+}
+
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}

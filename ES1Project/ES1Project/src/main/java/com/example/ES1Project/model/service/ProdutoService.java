@@ -4,8 +4,8 @@
  */
 package com.example.ES1Project.model.service;
 
-import com.example.ES1Project.Session.SessionManager;
 import com.example.ES1Project.dto.ProdutoDTO;
+import com.example.ES1Project.dto.RelatorioDTO;
 import com.example.ES1Project.model.Estoque;
 import com.example.ES1Project.model.Fornecedor;
 import com.example.ES1Project.model.Produto;
@@ -14,7 +14,6 @@ import com.example.ES1Project.repository.FornecedorRepository;
 import com.example.ES1Project.repository.ItemRepository;
 import com.example.ES1Project.repository.ProdutoRepository;
 import com.example.ES1Project.utils.PermissaoUtils;
-import static com.example.ES1Project.utils.PermissaoUtils.validarPermissao;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +84,21 @@ public class ProdutoService {
 
         produtoRepository.deleteById(id);
     }
+    
+    public List<RelatorioDTO> gerarRelatorioProdutos() {
+    List<Produto> produtos = produtoRepository.findAll();
+
+    return produtos.stream().map(produto -> {
+        String nomeFornecedor = produto.getFornecedor() != null ? produto.getFornecedor().getNome() : "Desconhecido";
+        int quantidade = itemRepository.contarItensPorProduto(produto.getId());
+
+        return new RelatorioDTO(
+            produto.getNome(),
+            Integer.toString(produto.getCodigoBarras()),
+            nomeFornecedor,
+            quantidade
+        );
+    }).toList();
+}
 
 }

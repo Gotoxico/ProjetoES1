@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org/extras/thymeleaf-spring.xsd">
+<head>
+    <title>Inserir Gerente</title>
+    <!-- Link to your CSS files -->
+          <link rel="stylesheet" href="@{/css/InserirGerente.css}">  
+
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <!-- Navigation will be rendered here -->
+            <th:block th:replace="fragments/navigation :: navigation"></th:block>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Inserir Gerente</h1>
+
+        <div class="add-manager-form">
+            <div class="Formfield">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" class="Forminput" name="nome"/>
+            </div>
+
+            <div class="Formfield">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" class="Forminput" name="cpf"/>
+            </div>
+
+            <button class="SendButton" onclick="cadastrarGerente()">Cadastrar</button>
+        </div>
+
+        <div class="employees-table">
+            <h2>Operadores Selecionados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome Operador</th>
+                        <th>CPF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="operador : ${operadoresSelecionados}">
+                        <td><span th:text="${operador.nomeOperador}"></span></td>
+                        <td><span th:text="${operador.cpf}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        </div>
+    </footer>
+
+    <script>
+      function cadastrarGerente() {
+          // Implement your insertion logic here (e.g., AJAX)
+          alert("cadastrarGerente function called. Implement your insertion logic.");
+      }
+    </script>
+
+</body>
+</html>

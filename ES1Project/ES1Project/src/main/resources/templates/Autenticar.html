@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org/extras/thymeleaf-spring.xsd">
+<head>
+    <title>Gerenciador Estoque</title>
+    <!-- Link to your CSS files -->
+    <link rel="stylesheet" th:href="@{/css/Autenticar.css}">  <!-- Keep header.css for any shared styles -->
+ 
+</head>
+<body>
+
+    <main class="container">  <!-- Added container for overall layout -->
+        <h1>Gerenciador Estoque</h1>
+
+        <div class="login-form">
+            <div class="Formfield">
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" class="Forminput" name="usuario"/>
+            </div>
+
+            <div class="Formfield">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" class="Forminput" name="senha"/>
+            </div>
+
+            <button class="SendButton" onclick="enviarLogin()">Enviar</button> <!-- JavaScript function call -->
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        </div>
+    </footer>
+
+    <script>
+      function enviarLogin() {
+          // Implement your login submission logic here (e.g., AJAX)
+          alert("enviarLogin function called. Implement your submission logic.");
+      }
+    </script>
+
+</body>
+</html>

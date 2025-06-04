@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org/extras/thymeleaf-spring.xsd">
+<head>
+    <title>Eliminar Produto</title>
+    <!-- Link to your CSS files -->
+       <link rel="stylesheet" href="@{/css/EliminarProduto.css}">  
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <!-- Navigation will be rendered here -->
+            <th:block th:replace="fragments/navigation :: navigation"></th:block>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Eliminar Produto</h1>
+
+        <div class="delete-form">
+            <div class="Formfield">
+                <label for="nomeProduto">Nome Produto:</label>
+                <input type="text" id="nomeProduto" class="Forminput" name="nomeProduto"/>
+            </div>
+
+            <div class="Formfield">
+                <label for="codigoBarras">Código Barras:</label>
+                <input type="text" id="codigoBarras" class="Forminput" name="codigoBarras"/>
+            </div>
+
+            <div class="Formfield">
+                <label for="nomeFornecedor">Nome Fornecedor:</label>
+                <input type="text" id="nomeFornecedor" class="Forminput" name="nomeFornecedor"/>
+            </div>
+
+            <button class="SendButton" onclick="eliminarProduto()">Eliminar</button>
+        </div>
+
+        <div class="supplier-table">
+            <h2>Fornecedores</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome Fornecedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="fornecedor : ${fornecedores}">
+                        <td><span th:text="${fornecedor.nomeFornecedor}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        </div>
+    </footer>
+
+    <script>
+      function eliminarProduto() {
+          // Implement your deletion logic here (e.g., AJAX)
+          alert("eliminarProduto function called. Implement your deletion logic.");
+      }
+    </script>
+
+</body>
+</html>
