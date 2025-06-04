@@ -44,7 +44,6 @@ public class FornecedorController {
 
     @PostMapping
     public Fornecedor criarFornecedor(@RequestBody FornecedorDTO dto) {
-        
         return fornecedorService.salvarFornecedor(dto);
     }
     

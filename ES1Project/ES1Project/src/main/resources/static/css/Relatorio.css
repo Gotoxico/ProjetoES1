@@ -1,0 +1,78 @@
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.ReportTable {
+    width: 100%; /* Or a specific width if needed */
+    border-collapse: collapse; /* Removes spacing between table cells */
+    font-family: 'Roboto', sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto auto;
+}
+
+th, td {
+    border: 1px solid #000000;  /* Light gray border for all cells */
+    padding: 8px;
+    text-align: left; /* Left align text within the cells */
+}
+
+th:nth-child(odd) {
+    color: #FE7743;
+}
+
+th:nth-child(even) {
+    color: #273F4F;
+}
+
+th {
+    background-color: #EFEEEA; /* Light gray background for header cells */
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;  /* Slightly different background color for even rows */
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+.names {
+    color: #EFEEEA;
+    font-size: 1em; /* Adjusted font size */
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0; /* Remove default body margin */
+}
