@@ -1,0 +1,64 @@
+.container {
+    max-width: 1920px; /* Or whatever max width you want */
+    margin: 0 auto;  /* Center the content */
+    padding: 20px;
+}
+
+.add-manager-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.employees-table {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.employees-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employees-table th, .employees-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.employees-table th {
+    background-color: #f2f2f2;
+}
+
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}

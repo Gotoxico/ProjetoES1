@@ -1,0 +1,74 @@
+.container {
+    max-width: 1920px; /* Or whatever max width you want */
+    margin: 0 auto;  /* Center the content */
+    padding: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column; /* Stack form fields vertically */
+    align-items: stretch;   /* Stretch items to full width */
+    margin-top: 20px;
+}
+
+.Formfield {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Forminput {
+  width: 100%; /* Make inputs full width */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 30px;
+  background-color: #EFEEEA;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+.Forminput:focus {
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+.SendButton {
+  margin-top: 20px; /* Add some space above the button */
+}
+
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}

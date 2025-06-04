@@ -14,6 +14,14 @@ public class OperadorDTO {
     private String senha;
     private Long estoque_id;
     private Long gerente_id;
+
+    public OperadorDTO(String nome, String cpf, String senha, Long estoque_id, Long gerente_id) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.estoque_id = estoque_id;
+        this.gerente_id = gerente_id;
+    }
     
     
     public String getNome() {

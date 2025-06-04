@@ -13,4 +13,11 @@ public class FornecedorDTO {
     public String contato;
     public String cnpj;
     public Long estoque_id;
+    
+     public FornecedorDTO(String nome, String contato, String cnpj, Long estoque_id) {
+        this.nome = nome;
+        this.contato = contato;
+        this.cnpj = cnpj;
+        this.estoque_id = estoque_id;
+    }
 }

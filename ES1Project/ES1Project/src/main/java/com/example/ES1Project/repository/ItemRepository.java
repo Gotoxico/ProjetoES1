@@ -20,4 +20,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Modifying
     @Query("DELETE FROM Item i WHERE i.produto.id = :produtoId")
     void deleteByProdutoId(@Param("produtoId") Long produtoId);
+    
+    @Query("SELECT COUNT(i) FROM Item i WHERE i.produto.id = :produtoId")
+    int contarItensPorProduto(@Param("produtoId") Long produtoId);
 }

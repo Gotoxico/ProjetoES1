@@ -32,7 +32,7 @@ public class FornecedorController {
     }
     
     @GetMapping
-    public List<Fornecedor> listarProdutos() {
+    public List<FornecedorDTO> listarProdutos() {
         return fornecedorService.listarFornecedores();
     }
 
@@ -44,7 +44,6 @@ public class FornecedorController {
 
     @PostMapping
     public Fornecedor criarFornecedor(@RequestBody FornecedorDTO dto) {
-        
         return fornecedorService.salvarFornecedor(dto);
     }
     

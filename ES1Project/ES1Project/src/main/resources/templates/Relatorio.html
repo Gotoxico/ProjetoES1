@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Relatório de Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/Relatorio.css}">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
+    </div>
+</header>
+
+<main>
+    <h1>Relatório de Produtos</h1>
+
+    <div class="ReportTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Produto</th>
+                    <th>Código Barras</th>
+                    <th>Nome Fornecedor</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${productData}">
+                    <td th:text="${product.nomeProduto}">Produto</td>
+                    <td th:text="${product.codigoBarras}">Código</td>
+                    <td th:text="${product.nomeFornecedor}">Fornecedor</td>
+                    <td th:text="${product.quantidade}">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+        <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+    </div>
+</footer>
+
+</body>
+</html>
