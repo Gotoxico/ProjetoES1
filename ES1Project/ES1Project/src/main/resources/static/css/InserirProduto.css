@@ -8,9 +8,12 @@
 .header-content {
     max-width: 1920px;
     width: 100%;
-    display: grid;
-    align-items: center;
+    display: flex;               /* Use flexbox */
+    align-items: center;         /* Vertically center items */
+    justify-content: space-between; /* Space out left and right sides */
     padding: 0 40px;
+    gap: 20px;                   /* Optional spacing between items */
+    flex-wrap: wrap;             /* Allow wrapping on smaller screens */
 }
 
 .Formfield {
@@ -24,7 +27,7 @@ label {
 }
 
 .Forminput {
-  width: 30%;
+  width: 50%;
   padding: 8px 12px;
   border: none;
   border-radius: 30px;
@@ -50,6 +53,12 @@ label {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   transition: all 0.3s ease; /* Smooth transition for hover effect */
   font-family: 'Roboto', sans-serif;
+  display: block;
+  margin: 0 auto;
+  flex-direction: column; /* stack label above input */
+  margin-bottom: 16px;     /* spacing between fields */
+  margin-top: 16px; /* space between fields and button */
+  align-self: center; /* explicitly center within flex container */
 }
 
 .SendButton:hover {
@@ -63,7 +72,8 @@ label {
 
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0; /* Remove default body margin */
+    margin: 0; 
+    background-color: #EFEEEA;
 }
 
 .form-container {
@@ -111,4 +121,47 @@ body {
     justify-content: flex-end;
     padding: 0 40px;
     gap: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    flex-direction: column;   
+}
+
+.form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 40px;               
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;     
+}
+
+.opcoes{
+    color: #EFEEEA;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.opcoes:hover{
+    color:#273F4F;
+    cursor: pointer;
+}
+
+.opcaoSelecionada{
+    color:#273F4F;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
+    font-weight: bold;
+}
+
+.greeting{
+    color: #EFEEEA;
 }

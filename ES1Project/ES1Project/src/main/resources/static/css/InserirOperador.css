@@ -71,3 +71,236 @@
     padding: 0 40px;
     gap: 20px;
 }
+
+.container {
+    max-width: 1920px; /* Or whatever max width you want */
+    margin: 0 auto;  /* Center the content */
+    padding: 20px;
+}
+
+.delete-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.supplier-table {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.supplier-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.supplier-table th, .supplier-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.supplier-table th {
+    background-color: #f2f2f2;
+}
+
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+.header {
+    background-color: #FE7743;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;               /* Use flexbox */
+    align-items: center;         /* Vertically center items */
+    justify-content: space-between; /* Space out left and right sides */
+    padding: 0 40px;
+    gap: 20px;                   /* Optional spacing between items */
+    flex-wrap: wrap;             /* Allow wrapping on smaller screens */
+}
+
+.Formfield {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Forminput {
+  width: 50%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 30px;
+  background-color: #EFEEEA;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+.Forminput:focus {
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+.SendButton {
+  background-color: #FE7743; /* Orange background color */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin: 0 auto;
+  flex-direction: column; /* stack label above input */
+  margin-bottom: 16px;     /* spacing between fields */
+  margin-top: 16px; /* space between fields and button */
+  align-self: center; /* explicitly center within flex container */
+}
+
+.SendButton:hover {
+    background-color: #273F4F; /* Darker orange on hover */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.SendButton:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0; 
+    background-color: #EFEEEA;
+}
+
+.form-container {
+  display: flex;
+}
+
+.form-fields {
+  flex: 1; /* Takes up most of the space */
+  padding: 20px;
+}
+
+.supplier-table {
+  flex: 1; /* Takes up remaining space */
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.supplier-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.supplier-table th, .supplier-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.supplier-table th {
+    background-color: #f2f2f2;
+}
+
+.footer {
+    background-color: #273F4F;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    flex-direction: column;   
+}
+
+.form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 40px;               
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;     
+}
+
+.opcoes{
+    color: #EFEEEA;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.opcoes:hover{
+    color:#273F4F;
+    cursor: pointer;
+}
+
+.opcaoSelecionada{
+    color:#273F4F;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
+    font-weight: bold;
+}
+
+.greeting{
+    color: #EFEEEA;
+}

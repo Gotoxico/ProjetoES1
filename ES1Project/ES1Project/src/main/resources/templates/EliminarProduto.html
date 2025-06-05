@@ -6,20 +6,33 @@
     <title>Eliminar Produto</title>
     <!-- Link to your CSS files -->
        <link rel="stylesheet" th:href="@{/css/EliminarProduto.css}">  
+       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="header">
         <div class="header-content">
-            <!-- Navigation will be rendered here -->
-            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
+            <div class="nav-links">
+            <a class="opcoes" th:href="@{/cadastrar-usuario}">Cadastrar Usuário</a>
+            <a class="opcoes" th:href="@{/inserir-produto}">Inserir Produto</a>
+            <a class="opcoes" th:href="@{/eliminar-produto}">Eliminar Produto</a>
+            <a class="opcoes" th:href="@{/relatorio}">Relatório</a>
+            <div class="greeting">Olá, Usuário</div>
+            <a class="opcoes" th:href="@{/inserir-fornecedor}">Inserir Fornecedor</a>
+            <a class="opcoes" th:href="@{/inserir-gerente}">Inserir Gerente</a>
+            <a class="opcoes" th:href="@{/inserir-operador}">Inserir Operador</a>
+            <a class="opcoes" th:href="@{/}">Sair</a>
+            <!-- Navigation will be rendered here, likely through a link or another template -->
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>   Example using Thymeleaf fragments -->
+            </div>
+            
         </div>
     </header>
 
     <main class="container">
         <h1>Eliminar Produto</h1>
-
-        <div class="delete-form">
+        <div class="form-container">
+        <div class="form-fields">
             <div class="Formfield">
                 <label for="nomeProduto">Nome Produto:</label>
                 <input type="text" id="nomeProduto" class="Forminput" name="nomeProduto"/>
@@ -56,13 +69,14 @@
                 </tbody>
             </table>
         </div>
+        </div>
 
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
-            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+            <div><img th:src="@{/images/Property 1=light.svg}" alt="Logo"/></div>
         </div>
     </footer>
 

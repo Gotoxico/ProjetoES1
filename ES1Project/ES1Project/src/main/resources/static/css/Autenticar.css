@@ -2,6 +2,8 @@
     max-width: 1920px; /* Or whatever max width you want */
     margin: 0 auto;  /* Center the content */
     padding: 20px;
+    background-color: #EFEEEA;
+    flex: 1; 
 }
 
 .login-form {
@@ -22,14 +24,25 @@ label {
 }
 
 .Forminput {
-  width: 100%; /* Make inputs full width */
+  width: 50%; /* Make inputs full width */
   padding: 8px 12px;
   border: none;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: #EFEEEA;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   outline: none;
+  display: block;
+  margin: 0 auto;
+  flex-direction: column; /* stack label above input */
+  margin-bottom: 16px;     /* spacing between fields */
+}
+
+.Formfield label {
+  margin-bottom: 6px;      /* spacing between label and input */
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
 }
 
 .Forminput:focus {
@@ -38,7 +51,27 @@ label {
 }
 
 .SendButton {
-  margin-top: 20px; /* Add some space above the button */
+  background-color: #FE7743; /* Orange background color */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  font-family: 'Roboto', sans-serif;
+  max-width: 250px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  flex-direction: column; /* stack label above input */
+  margin-bottom: 16px;     /* spacing between fields */
+}
+
+.SendButton:hover {
+    background-color: #273F4F; /* Darker orange on hover */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .header {
@@ -71,4 +104,38 @@ label {
     justify-content: flex-end;
     padding: 0 40px;
     gap: 20px;
+}
+
+.h1{
+    text-align: center;
+    color: #FE7743;
+    font-family: Roboto, sans-serif;
+}
+
+.Titulo{
+    text-align: center;
+    color: #FE7743;
+    font-family: Roboto, sans-serif;
+}
+
+.Tudo{
+    font-family: Roboto, sans-serif;
+}
+
+.Labels{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    font-family: Roboto, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-wrapper {
+  min-height: 300vh;
+  display: flex;
+  flex-direction: column;
 }

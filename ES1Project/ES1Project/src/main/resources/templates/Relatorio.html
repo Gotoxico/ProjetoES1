@@ -3,14 +3,28 @@
 <head>
     <title>Relatório de Produtos</title>
     <link rel="stylesheet" th:href="@{/css/Relatorio.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <div class="header-content">
-        <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>-->
-    </div>
-</header>
+        <div class="header-content">
+            <div class="nav-links">
+            <a class="opcoes" th:href="@{/cadastrar-usuario}">Cadastrar Usuário</a>
+            <a class="opcoes" th:href="@{/inserir-produto}">Inserir Produto</a>
+            <a class="opcoes" th:href="@{/eliminar-produto}">Eliminar Produto</a>
+            <a class="opcoes" th:href="@{/relatorio}">Relatório</a>
+            <div class="greeting">Olá, Usuário</div>
+            <a class="opcoes" th:href="@{/inserir-fornecedor}">Inserir Fornecedor</a>
+            <a class="opcoes" th:href="@{/inserir-gerente}">Inserir Gerente</a>
+            <a class="opcoes" th:href="@{/inserir-operador}">Inserir Operador</a>
+            <a class="opcoes" th:href="@{/}">Sair</a>
+            <!-- Navigation will be rendered here, likely through a link or another template -->
+            <!--<th:block th:replace="fragments/navigation :: navigation"></th:block>   Example using Thymeleaf fragments -->
+            </div>
+            
+        </div>
+    </header>
 
 <main>
     <h1>Relatório de Produtos</h1>
@@ -40,7 +54,7 @@
 <footer class="footer">
     <div class="footer-content">
         <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
-        <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        <div><img th:src="@{/images/Property 1=light.svg}" alt="Logo"/></div>
     </div>
 </footer>
 

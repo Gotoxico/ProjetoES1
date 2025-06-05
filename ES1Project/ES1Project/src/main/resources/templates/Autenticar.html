@@ -5,42 +5,39 @@
 <head>
     <title>Gerenciador Estoque</title>
     <!-- Link to your CSS files -->
-    <link rel="stylesheet" th:href="@{/css/Autenticar.css}">  <!-- Keep header.css for any shared styles -->
+    <link rel="stylesheet" th:href="@{/css/Autenticar.css}">  
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
  
 </head>
-<body>
-
+<body class="Tudo">
     <main class="container">  <!-- Added container for overall layout -->
-        <h1>Gerenciador Estoque</h1>
+        <h1 class="Titulo">Gerenciador Estoque</h1>
 
-        <div class="login-form">
-            <div class="Formfield">
-                <label for="usuario">Usuário:</label>
-                <input type="text" id="usuario" class="Forminput" name="usuario"/>
-            </div>
+            <form class="login-form" th:action="@{/login}" method="post">
+                 <div class="Formfield">
+                     <label class="Labels" for="usuario">Usuário</label>
+                     <input type="text" id="usuario" class="Forminput" name="usuario"/>
+                 </div>
 
-            <div class="Formfield">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" class="Forminput" name="senha"/>
-            </div>
+                 <div class="Formfield">
+                     <label class="Labels" for="senha">Senha</label>
+                     <input type="password" id="senha" class="Forminput" name="senha"/>
+                 </div>
 
-            <button class="SendButton" onclick="enviarLogin()">Enviar</button> <!-- JavaScript function call -->
-        </div>
+                 <button type="submit" class="SendButton">Enviar</button>
+             </form>
+
 
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
-            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+            <div><img th:src="@{/images/Property 1=light.svg}" alt="Logo"/></div>
         </div>
     </footer>
 
     <script>
-      function enviarLogin() {
-          // Implement your login submission logic here (e.g., AJAX)
-          alert("enviarLogin function called. Implement your submission logic.");
-      }
     </script>
 
 </body>
